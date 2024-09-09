@@ -23,23 +23,10 @@ export class AuthService {
     private configService: ConfigService,
   ) {}
 
-  // async signUp(email: string, password: string, name: string) {
-  //   const hashPassword = await bcrypt.hash(password, 10);
-  //   console.log(hashPassword);
-
-  //   return await this.authRepository.register(email, hashPassword, name);
-  //   // try {
-  //   //   return await this.authRepository.register(user);
-  //   // } catch (error) {
-  //   //   if (error.code === '23505') {
-  //   //     throw new ConflictException(`${user.email} already exists.`);
-  //   //   }
-  //   // }
-  // }
-
   async signUp(data: signUpDto) {
     const user = await this.authRepository.findUserByEmail(data.email);
-    if (!user) {
+    console.log(user);
+    if (user) {
       throw new ConflictException(`${data.email} already exists`);
     }
     const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -100,7 +87,7 @@ export class AuthService {
     if (!user) {
       throw new NotFoundException(`${data.uuid} doesn't exist.`);
     }
-    const newAccess = await this.getAccessToken(user.uuid);
+    const newAccess = this.getAccessToken(user.uuid);
     return newAccess;
   }
 }

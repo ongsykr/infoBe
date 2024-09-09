@@ -1,16 +1,16 @@
 import { PrismaService } from 'src/prisma/prisma.service';
 import { createDto } from './dto/create.dto';
 import { updateDto } from './dto/update.dto';
-import { InternalServerErrorException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { PrismaClient } from '@prisma/client';
 
+@Injectable()
 export class ContentRepository {
   constructor(private prismaService: PrismaService) {}
 
   async create(user: string, data: createDto) {
-    const prisma = new PrismaClient();
-    return prisma.contents
+    return this.prismaService.contents
       .create({
         data: {
           authorId: user,
@@ -28,8 +28,7 @@ export class ContentRepository {
   }
 
   async delete(id: number) {
-    const prisma = new PrismaClient();
-    return prisma.contents
+    return this.prismaService.contents
       .delete({
         where: {
           id,
@@ -44,8 +43,7 @@ export class ContentRepository {
   }
 
   async update(data: updateDto) {
-    const prisma = new PrismaClient();
-    return prisma.contents
+    return this.prismaService.contents
       .update({
         where: {
           id: data.id,
@@ -61,8 +59,7 @@ export class ContentRepository {
   }
 
   async findByTag(tag: string) {
-    const prisma = new PrismaClient();
-    return prisma.contents
+    return this.prismaService.contents
       .findMany({
         where: {
           tag,
@@ -77,8 +74,7 @@ export class ContentRepository {
   }
 
   async findById(id: number) {
-    const prisma = new PrismaClient();
-    return prisma.contents
+    return this.prismaService.contents
       .findUnique({
         where: {
           id,
@@ -94,8 +90,7 @@ export class ContentRepository {
   }
 
   async findByKeyword(keyword: string) {
-    const prisma = new PrismaClient();
-    return prisma.contents
+    return this.prismaService.contents
       .findMany({
         where: {
           OR: [

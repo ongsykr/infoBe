@@ -19,29 +19,6 @@ export class AuthController {
   })
   @ApiBody({ type: signUpDto })
   signUp(@Body() body: signUpDto) {
-    // const prisma = new PrismaClient();
-    // const email = 'example1@example.com';
-    // const password = 'securepassword';
-    // const name = 'John Doe';
-    // const uuid = '123e4007-e89b-12d3-a456-426614174010';
-
-    // async function testQuery() {
-    //   try {
-    //     await prisma.user.create({
-    //       data: {
-    //         uuid,
-    //         email,
-    //         password,
-    //         name,
-    //       },
-    //     });
-    //     console.log('Query executed successfully');
-    //   } catch (error) {
-    //     console.error('Error executing query:', error);
-    //   }
-    // }
-
-    // return testQuery();
     return this.authService.signUp(body);
   }
 

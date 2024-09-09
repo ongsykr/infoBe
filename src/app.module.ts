@@ -15,7 +15,5 @@ import { AuthRepository } from './auth/auth.repository';
     ContentModule,
   ],
   controllers: [AppController],
-  providers: [AppService, AuthRepository, PrismaService],
-  exports: [AuthRepository],
 })
 export class AppModule {}
