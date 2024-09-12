@@ -1,7 +1,6 @@
 import { PrismaService } from 'src/prisma/prisma.service';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { Prisma, PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class AuthRepository {

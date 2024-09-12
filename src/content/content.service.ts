@@ -1,13 +1,10 @@
 import {
-  Body,
   Injectable,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { ContentRepository } from './content.repository';
 import { createDto } from './dto/create.dto';
-import { NotFoundError } from 'rxjs';
-import { compare } from 'bcrypt';
 import { updateDto } from './dto/update.dto';
 
 @Injectable()

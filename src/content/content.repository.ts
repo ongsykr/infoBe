@@ -3,7 +3,6 @@ import { createDto } from './dto/create.dto';
 import { updateDto } from './dto/update.dto';
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
-import { PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class ContentRepository {

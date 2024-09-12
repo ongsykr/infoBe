@@ -1,6 +1,5 @@
 import {
   ConflictException,
-  HttpException,
   Injectable,
   NotFoundException,
   UnauthorizedException,
@@ -8,12 +7,9 @@ import {
 import { signUpDto } from './dto/signUp.dto';
 import { loginDto } from './dto/login.dto';
 import * as bcrypt from 'bcrypt';
-import { hash } from 'crypto';
 import { AuthRepository } from './auth.repository';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { access } from 'fs';
-import { createDto } from 'src/content/dto/create.dto';
 
 @Injectable()
 export class AuthService {

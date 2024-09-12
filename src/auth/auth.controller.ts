@@ -3,10 +3,7 @@ import { AuthService } from './auth.service';
 import { signUpDto } from './dto/signUp.dto';
 import { loginDto } from './dto/login.dto';
 import { refreshDto } from './dto/refresh.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { PrismaClient } from '@prisma/client';
 import { ApiBody, ApiOperation } from '@nestjs/swagger';
-import { sign } from 'crypto';
 
 @Controller('auth')
 export class AuthController {
